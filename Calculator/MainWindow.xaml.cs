@@ -20,8 +20,8 @@ namespace Calculator
     /// </summary>
     public partial class MainWindow : Window
     {
-        int first;
-        int second;
+        float first;
+        float second;
         char op;
 
         public MainWindow()
@@ -35,48 +35,48 @@ namespace Calculator
             if (Result.Text == "0") { Result.Clear(); }
             Button btn = (Button)sender;
             Result.Text += btn.Content.ToString();
-            second = Int32.Parse(Result.Text);
+            second = float.Parse(Result.Text);
         }
 
         private void Divide_Click(object sender, RoutedEventArgs e)
         {
-            first = Int32.Parse(Result.Text);
+            first = float.Parse(Result.Text);
             op = '/';
             Result.Clear();
         }
 
         private void Multiply_Click(object sender, RoutedEventArgs e)
         {
-            first = Int32.Parse(Result.Text);
+            first = float.Parse(Result.Text);
             op = '*';
             Result.Clear();
         }
 
         private void Plus_Click(object sender, RoutedEventArgs e)
         {
-            first = Int32.Parse(Result.Text);
+            first = float.Parse(Result.Text);
             op = '+';
             Result.Clear();
         }
 
         private void Minus_Click(object sender, RoutedEventArgs e)
         {
-            first = Int32.Parse(Result.Text);
+            first = float.Parse(Result.Text);
             op = '-';
             Result.Clear();
         }
 
         private void Equals_Click(object sender, RoutedEventArgs e)
         {
-            second = Int32.Parse(Result.Text);
-            int result = 0;
-            if (op == '+') { result = first + second; }
-            else if (op == '-') { result = first - second; }
-            else if (op == '*') { result = first * second; }
-            else if (op == '/') { result = first / second; }
-            //if (Result.Text == "0") { Result.Clear(); }
-            op = ' ';
-            Result.Text = result.ToString();
+                second = float.Parse(Result.Text);
+                float result = 0f;
+                if (op == '+') { result = first + second; }
+                else if (op == '-') { result = first - second; }
+                else if (op == '*') { result = first * second; }
+                else if (op == '/')
+                { result = first / second; if (second == 0) { result = 0; } }
+                op = ' ';
+                Result.Text = result.ToString();
         }
 
         private void Clear_Click(object sender, RoutedEventArgs e)
